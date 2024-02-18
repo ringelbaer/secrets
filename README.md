@@ -3,10 +3,13 @@
 
 ## Anwendungsbeispiel: 
 Übermittle Credentials sicherer: statt Benutzername + Passwort sende Benutzername + Link an deinen Kontakt. Einmaliger Abruf des Geheimnisses über den Link ermöglicht Vertraulichkeit.
+
 Kann der Empfänger das Passwort abrufen: alles in Ordnung. Niemand hat vorher das Passwort betrachtet.
 
+Fordere den Empfänger trotzdem zur Passwortänderung auf!
+
 ## Don'ts
-- Verschlüssele niemals in einem Geheimnis Benutzername und Passwort zusammen.
+- Verschlüssele niemals in einem Geheimnis Benutzername + Passwort zusammen.
 - Gib im Geheimnis niemals einen Hinweis auf den Zweck/Anwendungsort des Passworts.
 - Nutze das Tool nicht ohne ausreichende Verbindungsverschlüsselung (SSL/https).
 
@@ -32,4 +35,5 @@ Kann der Empfänger das Passwort abrufen: alles in Ordnung. Niemand hat vorher d
 3. ggf. tausche das Logo aus.
 5. Fertig.
 
-Hinweis: Mehrmals abrufbare Geheimnisse sind deutlich unsicherer als einmalig abrufbare Geheimnisse, da nicht ausgeschlossen werden kann, dass jemand Unberechtigtes, der vom Link Kenntnis erlangt, das Geheimnis abruft. Außerdem wird je nach Serverkonfiguration beim Abruf die URL inkl. Schlüssel in den Aufruf-Logs des Webservers protokolliert, was bei mehrmaliger Zugriffsmöglichkeit ebenfalls ein Risiko darstellt.
+Hinweis:<br />
+Mehrmals abrufbare Geheimnisse sind deutlich unsicherer als einmalig abrufbare Geheimnisse, da nicht ausgeschlossen werden kann, dass jemand Unberechtigtes, der vom Link Kenntnis erlangt, das Geheimnis abruft. Außerdem wird je nach Serverkonfiguration beim Abruf die URL inkl. Schlüssel in den Aufruf-Logs des Webservers protokolliert, was bei mehrmaliger Zugriffsmöglichkeit ebenfalls ein Risiko darstellt.
