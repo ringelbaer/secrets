@@ -8,6 +8,7 @@ Kann der Empfänger das Passwort abrufen: alles in Ordnung. Niemand hat vorher d
 ## Don'ts
 - Verschlüssele niemals in einem Geheimnis Benutzername und Passwort zusammen.
 - Gib im Geheimnis niemals einen Hinweis auf den Zweck/Anwendungsort des Passworts.
+- Nutze das Tool nicht ohne ausreichende Verbindungsverschlüsselung (SSL/https).
 
 ## Eigenschaften
 - minimale Anforderungen: PHP8/sqlite3
@@ -31,4 +32,4 @@ Kann der Empfänger das Passwort abrufen: alles in Ordnung. Niemand hat vorher d
 3. ggf. tausche das Logo aus.
 5. Fertig.
 
-Hinweis: Mehrmals abrufbare Geheimnisse sind deutlich unsicherer als einmalig abrufbare Geheimnisse, da nicht ausgeschlossen werden kann, dass jemand Unberechtigtes, der vom Link Kenntnis erlangt, das Geheimnis abruft. Außerdem wird je nach Serverkonfiguration der Schlüssel in den Aufruf-Logs des Webservers protokolliert, was bei mehrmaliger Zugriffsmöglichkeit ebenfalls ein Risiko darstellt.
+Hinweis: Mehrmals abrufbare Geheimnisse sind deutlich unsicherer als einmalig abrufbare Geheimnisse, da nicht ausgeschlossen werden kann, dass jemand Unberechtigtes, der vom Link Kenntnis erlangt, das Geheimnis abruft. Außerdem wird je nach Serverkonfiguration beim Abruf die URL inkl. Schlüssel in den Aufruf-Logs des Webservers protokolliert, was bei mehrmaliger Zugriffsmöglichkeit ebenfalls ein Risiko darstellt.
