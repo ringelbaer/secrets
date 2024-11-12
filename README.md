@@ -19,7 +19,7 @@ Fordere den Empfänger trotzdem zur Passwortänderung auf!
 - keine Datenbankeinrichtung
 - "Kopiere in die Zwischenablage"-Button für URL und Geheimnis
 - eigenes Branding: logo.png
-- extrem klein: keine Dependencies, Vanilla JS -> 12 KB + Logo + DB
+- extrem klein: keine Dependencies, Vanilla JS -> 15 KB + Logo + DB
 
 ## Sicherheit
 - Verschlüsselung mit (halbwegs) zufälligem Schlüssel
