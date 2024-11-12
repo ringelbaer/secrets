@@ -1,14 +1,17 @@
 <?php
-/* Verschlüsselungsformular vor Zufallsfunden schützen? 
-* Wenn true muss an die URL ein ?neu (oder anderes Query-String) angehängt werden, um das Formular zu sehen */
+/* Verschluesselungsformular vor Zufallsfunden schaetzen? 
+* Wenn true muss an die URL ein ?neu (oder anderes Query-String) angehaengt werden, um das Formular zu sehen */
 $protect = true;
 $protectstring = 'neu';
 
 /* Speicherdauer */
 $s = 7;
 
-/* Maximale Länge der Zeichenkette */
+/* Maximale Laenge der Zeichenkette */
 $max = 200;
+
+/* Mehrfachen Abruf des Passworts als konfigurierbare Option erlauben */
+$multiple = false;
 
 /* Base-URL des Tools */
 	/* Base-URL automatisch bestimmen */
@@ -19,8 +22,8 @@ $max = 200;
 
 
 
-/* Vorschaumodus aktivieren? (empfohlen nur für Test + Debugging)
-* Ermöglicht bei Kenntnis des geheimen Links und des Vorschau-Passworts den Aufruf eines Einmal-Abruf-Links, ohne dass das Geheimnis gelöscht wird.
+/* Vorschaumodus aktivieren? (empfohlen nur fuer Test + Debugging)
+* Ermoeglicht bei Kenntnis des geheimen Links und des Vorschau-Passworts den Aufruf eines Einmal-Abruf-Links, ohne dass das Geheimnis geloescht wird.
 * ?id=id&key=key&vorschau=vorschaupass */
 $vorschaumodus = false;
 $vorschaupass = 'wysiwyg';

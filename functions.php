@@ -1,23 +1,39 @@
 <?php
-	// Funktionen zur Verschlüsselung und Entschlüsselung
-	function verschluessele($text, $schluessel) {
-		return openssl_encrypt($text, 'AES-128-ECB', $schluessel);
-	}
+// Funktionen zur Verschluesselung und Entschluesselung mit sicherem Modus
+function verschluessele($text, $schluessel) {
+    $cipher = 'AES-256-CBC';
+    $ivlen = openssl_cipher_iv_length($cipher);
+    $iv = openssl_random_pseudo_bytes($ivlen);
+    $ciphertext = openssl_encrypt($text, $cipher, $schluessel, 0, $iv);
+    return base64_encode($iv . $ciphertext);
+}
 
-	function entschluessele($text, $schluessel) {
-		return openssl_decrypt($text, 'AES-128-ECB', $schluessel);
-	}
-	
-	// Funktion zur Generierung einer zufälligen id
-	function generateRandomId() {
-		return random_int(1, 999999999);
-	}
+function entschluessele($text, $schluessel) {
+    $cipher = 'AES-256-CBC';
+    $data = base64_decode($text);
+    $ivlen = openssl_cipher_iv_length($cipher);
+    $iv = substr($data, 0, $ivlen);
+    $ciphertext = substr($data, $ivlen);
+    return openssl_decrypt($ciphertext, $cipher, $schluessel, 0, $iv);
+}
 
-	// Funktion zur Überprüfung, ob die id bereits existiert
-	function isIdUnique($db, $id) {
-		$idqu = $db->prepare("SELECT COUNT(*) FROM geheimnisse WHERE id = :id");
-		$idqu->bindValue(':id', $id, PDO::PARAM_INT);
-		$idqu->execute();
-		$anzahl = $idqu->fetchColumn();
-		return $anzahl == 0;
-	}
+// Funktion zur Generierung einer zufaelligen ID
+function generateRandomId() {
+    return bin2hex(random_bytes(16)); // 32 Zeichen lange ID
+}
+
+// CSRF-Token generieren und ueberpruefen
+function generateCsrfToken() {
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+function verifyCsrfToken($token) {
+    if (isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token)) {
+        unset($_SESSION['csrf_token']); // Token nach ueberpruefung entfernen
+        return true;
+    }
+    return false;
+}
